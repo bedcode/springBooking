@@ -49,7 +49,7 @@
 	<script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            "ajax": "../ajax/data.json",
+            "ajax": "../ajax/bookings.json",
             "columns": [
                { "data": "id" },
                { "data": "Risorsa" },
