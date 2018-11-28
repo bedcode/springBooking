@@ -20,8 +20,11 @@
 <!-- Custom CSS -->
 <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
 
-<!-- Morris Charts CSS -->
-<link href="../vendor/morrisjs/morris.css" rel="stylesheet">
+<!-- DataTables CSS -->
+<link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+<!-- DataTables Responsive CSS -->
+<link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
 <link href="../vendor/font-awesome/css/font-awesome.min.css"
@@ -195,10 +198,10 @@
 	<!-- Metis Menu Plugin JavaScript -->
 	<script src="../vendor/metisMenu/metisMenu.min.js"></script>
 
-	<!-- Morris Charts JavaScript -->
-	<script src="../vendor/raphael/raphael.min.js"></script>
-	<script src="../vendor/morrisjs/morris.min.js"></script>
-	<script src="../data/morris-data.js"></script>
+	<!-- DataTables JavaScript -->
+    <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
 
 	<!-- Custom Theme JavaScript -->
 	<script src="../dist/js/sb-admin-2.js"></script>

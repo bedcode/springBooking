@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Risorsa</title>
+<title>Risorse</title>
 </head>
 <body>
 
@@ -105,5 +105,13 @@
 	</div>
 	<!-- /#wrapper -->
 
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+    </script>
 </body>
 </html>
