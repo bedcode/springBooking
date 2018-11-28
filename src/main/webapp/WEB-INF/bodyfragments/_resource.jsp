@@ -17,8 +17,9 @@
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
-			<a href="${pageContext.request.contextPath}/addResource"><button type="button"
-					class="btn btn-outline btn-info">Aggiungi una Risorsa</button></a>
+			<a href="${pageContext.request.contextPath}/addResource"><button
+					type="button" class="btn btn-outline btn-info">Aggiungi
+					una Risorsa</button></a>
 			<!-- /.row -->
 			<div class="row">
 				<div class="col-lg-12">
@@ -38,60 +39,6 @@
 										<th>Elimina</th>
 									</tr>
 								</thead>
-								<tbody>
-									<tr class="odd gradeX">
-										<td>Auto</td>
-										<td>AA 111 AA</td>
-										<td>5 posti</td>
-										<td><button type="button"
-												class="btn btn-default btn-circle" onclick="">
-												<i class="fa fa-pencil"></i>
-											</button></td>
-										<td><button type="button"
-												class="btn btn-default btn-circle" onclick="">
-												<i class="glyphicon glyphicon-trash"></i>
-											</button></td>
-									</tr>
-									<tr class="even gradeC">
-										<td>Auto</td>
-										<td>AA 111 AA</td>
-										<td>5 posti</td>
-										<td><button type="button"
-												class="btn btn-default btn-circle" onclick="">
-												<i class="fa fa-pencil"></i>
-											</button></td>
-										<td><button type="button"
-												class="btn btn-default btn-circle" onclick="">
-												<i class="glyphicon glyphicon-trash"></i>
-											</button></td>
-									</tr>
-									<tr class="odd gradeA">
-										<td>Auto</td>
-										<td>AA 111 AA</td>
-										<td>5 posti</td>
-										<td><button type="button"
-												class="btn btn-default btn-circle" onclick="">
-												<i class="fa fa-pencil"></i>
-											</button></td>
-										<td><button type="button"
-												class="btn btn-default btn-circle" onclick="">
-												<i class="glyphicon glyphicon-trash"></i>
-											</button></td>
-									</tr>
-									<tr class="even gradeA">
-										<td>Auto</td>
-										<td>AA 111 AA</td>
-										<td>5 posti</td>
-										<td><button type="button"
-												class="btn btn-default btn-circle" onclick="">
-												<i class="fa fa-pencil"></i>
-											</button></td>
-										<td><button type="button"
-												class="btn btn-default btn-circle" onclick="">
-												<i class="glyphicon glyphicon-trash"></i>
-											</button></td>
-									</tr>
-								</tbody>
 							</table>
 						</div>
 						<!-- /.panel-body -->
@@ -105,11 +52,18 @@
 	</div>
 	<!-- /#wrapper -->
 
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
+	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+	<script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            responsive: true
+            "ajax": "../ajax/resources.json",
+            "columns": [
+               { "data": "Tipo Risorsa" },
+               { "data": "Nome Risorsa" },
+               { "data": "Limite" },
+               {"defaultContent": "<button>Modifica</button>"}},
+               {"defaultContent": "<button>Elimina</button>"}
+            ]
         });
     });
     </script>
