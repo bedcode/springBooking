@@ -1,5 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Dashboard</title>
+</head>
 <body>
         <div id="page-wrapper">
             <div class="row">
@@ -23,7 +29,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="prenotazioni_admin.html">
+                        <a href="${pageContext.request.contextPath}/bookings">
                             <div class="panel-footer">
                                 <span class="pull-left">Vedi Dettagli</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -45,7 +51,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="risorse.html">
+                        <a href="${pageContext.request.contextPath}/resource">
                             <div class="panel-footer">
                                 <span class="pull-left">Vedi Dettagli</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

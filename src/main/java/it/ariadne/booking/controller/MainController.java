@@ -17,5 +17,14 @@ public class MainController {
 	public String addResourcePage(Model model) {
 		return "addResourcePage";
 	}
+    
+    @RequestMapping(value = { "/resource" }, method = RequestMethod.GET)
+	public String resourcePage(Model model) {
+		return "resourcePage";
+	}
      
+    @RequestMapping(value = { "/bookings" }, method = RequestMethod.GET)
+	public String bookingsPage(Model model) {
+		return "bookingsPage";
+	}
 }
