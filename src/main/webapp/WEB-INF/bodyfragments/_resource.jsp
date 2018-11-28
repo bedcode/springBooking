@@ -39,6 +39,7 @@
 										<th>Elimina</th>
 									</tr>
 								</thead>
+
 							</table>
 						</div>
 						<!-- /.panel-body -->
@@ -61,8 +62,8 @@
                { "data": "Tipo Risorsa" },
                { "data": "Nome Risorsa" },
                { "data": "Limite" },
-               {"defaultContent": "<button>Modifica</button>"}},
-               {"defaultContent": "<button>Elimina</button>"}
+               {"defaultContent": '<button type="button" class="btn btn-default btn-circle" onclick=""><i class="fa fa-pencil"></i></button>'},
+               {"defaultContent": '<button type="button" class="btn btn-default btn-circle" onclick=""><i class="glyphicon glyphicon-trash"></i></button>'}
             ]
         });
     });
