@@ -42,6 +42,27 @@ public class MainController {
 		return "bookingsPage";
 	}
     
+    
+    @RequestMapping(value = { "/indexUser" }, method = RequestMethod.GET)
+	public String homeUserPage(Model model) {
+		return "indexUserPage";
+	}
+    
+    @RequestMapping(value = { "/findAvailability" }, method = RequestMethod.GET)
+	public String findAvailabilityPage(Model model) {
+		return "findAvailabilityPage";
+	}
+    
+    @RequestMapping(value = { "/addBooking" }, method = RequestMethod.GET)
+	public String addBookingPage(Model model) {
+		return "addBookingPage";
+	}
+     
+    @RequestMapping(value = { "/bookingsUser" }, method = RequestMethod.GET)
+	public String bookingsUserPage(Model model) {
+		return "bookingsUserPage";
+	}
+    
     @ResponseBody
     @RequestMapping(value = { "/resourcelist" }, method = RequestMethod.GET)
 	public TableResponse index() {

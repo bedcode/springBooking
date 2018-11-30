@@ -18,6 +18,19 @@
 			value="/WEB-INF/basefragments/_footer.jsp" />
 	</definition>
 
+    <!-- Base User Define -->
+	<definition name="baseUser.definition"
+		template="/WEB-INF/layouts/classic.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header"
+			value="/WEB-INF/basefragments/_headerUser.jsp" />
+		<put-attribute name="menu"
+			value="/WEB-INF/basefragments/_menuUser.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer"
+			value="/WEB-INF/basefragments/_footer.jsp" />
+	</definition>
+
 	<!-- Index Page -->
 	<definition name="indexPage" extends="base.definition">
 		<put-attribute name="title" value="Dashboard" />
@@ -44,6 +57,35 @@
 		<put-attribute name="title" value="Prenotazioni" />
 		<put-attribute name="body"
 			value="/WEB-INF/bodyfragments/_bookings.jsp" />
+	</definition>
+	
+	
+	<!-- Index User Page -->
+	<definition name="indexUserPage" extends="baseUser.definition">
+		<put-attribute name="title" value="Dashboard" />
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_indexUser.jsp" />
+	</definition>
+	
+	<!-- Find Availability Page -->
+	<definition name="findAvailabilityPage" extends="baseUser.definition">
+		<put-attribute name="title" value="Cerca Disponibilità" />
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_findAvailability.jsp" />
+	</definition>
+	
+	<!-- Add Booking Page -->
+	<definition name="addBookingPage" extends="baseUser.definition">
+		<put-attribute name="title" value="Aggiungi Prenotazione" />
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_addBooking.jsp" />
+	</definition>
+	
+	<!-- Bookings User Page -->
+	<definition name="bookingsUserPage" extends="baseUser.definition">
+		<put-attribute name="title" value="Prenotazioni" />
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_bookingsUser.jsp" />
 	</definition>
 
 </tiles-definitions> 
