@@ -24,26 +24,30 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-4">
-									<form role="form">
-										<div class="form-group">
-											<label>Tipo Risorsa</label> <select class="form-control"
-												required>
-												<option value="" selected disable hidden>Scegli un
-													tipo</option>
-												<option value="Auto">Auto</option>
-												<option value="Aula">Aula</option>
-												<option value="Computer">Computer</option>
+								
+								    <% 
+								       String name = (String) session.getAttribute("name");
+								       String error = (String) session.getAttribute("error");
+								    %>
+								    <font color="red"><b><%=error != null ? error:""%></b></font>
+									<form role="form" method="POST" action="/addresourceservlet">
+										<!-- <div class="form-group">
+											<label>Tipo Risorsa</label> <select class="form-control" required>
+												<option value="" selected disable hidden>Scegli un tipo</option>
+												<option name="type" value="">Auto</option>
+												<option name="type" value="">Aula</option>
+												<option name="type" value="">Computer</option>
 											</select>
-										</div>
+										</div> -->
 										<div class="form-group">
 											<label>Nome Risorsa</label> <input class="form-control"
-												placeholder="Inserire il nome della risorsa" required>
+												name="name" value="<%=name != null ? name: ""%>" placeholder="Inserire il nome della risorsa" required>
 										</div>
-										<div class="form-group">
+										<!-- <div class="form-group">
 											<label>Limite</label> <input type="number" min="1"
-												class="form-control"
+												class="form-control" name="constraint" value=""
 												placeholder="Inserire il limite della risorsa" required>
-										</div>
+										</div> -->
 										<button type="submit" class="btn btn-primary btn-lg">Salva</button>
 										<button type="reset"
 											class="btn btn-outline btn-primary btn-lg">Annulla</button>

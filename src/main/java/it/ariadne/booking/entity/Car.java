@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Car implements Resource {
 
 	@Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id", nullable = false)
     private Long id;
 

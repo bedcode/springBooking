@@ -57,11 +57,11 @@
 	<script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            "ajax": "../ajax/resources.json",
+            "ajax": "/resourcelist",
             "columns": [
-               { "data": "Tipo Risorsa" },
-               { "data": "Nome Risorsa" },
-               { "data": "Limite" },
+               { "data": "type" },
+               { "data": "name" },
+               { "data": "constraint" },
                {"defaultContent": '<button type="button" class="btn btn-default btn-circle" onclick=""><i class="fa fa-pencil"></i></button>'},
                {"defaultContent": '<button type="button" class="btn btn-default btn-circle" onclick=""><i class="glyphicon glyphicon-trash"></i></button>'}
             ]
