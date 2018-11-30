@@ -5,6 +5,16 @@
 
 <tiles-definitions>
 
+    <!-- Login Define -->
+	<definition name="baseLogin.definition"
+		template="/WEB-INF/layouts/classic.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/basefragments/_footer.jsp" />
+	</definition>
+
 	<!-- Base Define -->
 	<definition name="base.definition"
 		template="/WEB-INF/layouts/classic.jsp">
@@ -29,6 +39,13 @@
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer"
 			value="/WEB-INF/basefragments/_footer.jsp" />
+	</definition>
+
+    <!-- Login Page -->
+	<definition name="loginPage" extends="baseLogin.definition">
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_login.jsp" />
 	</definition>
 
 	<!-- Index Page -->
