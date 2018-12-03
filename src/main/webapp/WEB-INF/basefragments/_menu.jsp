@@ -21,13 +21,13 @@
 								</span>
 							</div> <!-- /input-group -->
 						</li>
-						<li><a href="${pageContext.request.contextPath}/index"><i
+						<li><a href="${pageContext.request.contextPath}/admin/index"><i
 								class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
-						<li><a href="${pageContext.request.contextPath}/addResource"><i
+						<li><a href="${pageContext.request.contextPath}/admin/addResource"><i
 								class="fa fa-edit fa-fw"></i> Aggiungi Risorsa</a></li>
-						<li><a href="${pageContext.request.contextPath}/resource"><i
+						<li><a href="${pageContext.request.contextPath}/admin/resource"><i
 								class="fa fa-tasks fa-fw"></i> Risorse</a></li>
-						<li><a href="${pageContext.request.contextPath}/bookings"><i
+						<li><a href="${pageContext.request.contextPath}/admin/bookings"><i
 								class="fa fa-table fa-fw"></i> Prenotazioni</a></li>
 					</ul>
 				</div>

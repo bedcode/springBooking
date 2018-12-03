@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Dashboard</title>
+<title>${title}</title>
 </head>
 <body>
 
@@ -30,7 +30,7 @@
 							</div>
 						</div>
 					</div>
-					<a href="${pageContext.request.contextPath}/bookingsUser">
+					<a href="${pageContext.request.contextPath}/user/bookings">
 						<div class="panel-footer">
 							<span class="pull-left">Vedi Dettagli</span> <span
 								class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

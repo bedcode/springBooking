@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Risorse</title>
+<title>${title}</title>
 </head>
 <body>
 
@@ -17,7 +17,7 @@
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
-			<a href="${pageContext.request.contextPath}/addResource"><button
+			<a href="${pageContext.request.contextPath}/admin/addResource"><button
 					type="button" class="btn btn-outline btn-info">Aggiungi
 					una Risorsa</button></a>
 			<!-- /.row -->
@@ -57,7 +57,7 @@
 	<script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            "ajax": "/resourcelist",
+            "ajax": "/admin/resourcelist",
             "columns": [
                { "data": "type" },
                { "data": "name" },

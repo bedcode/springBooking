@@ -21,13 +21,13 @@
 								</span>
 							</div> <!-- /input-group -->
 						</li>
-						<li><a href="${pageContext.request.contextPath}/indexUser"><i
+						<li><a href="${pageContext.request.contextPath}/user/index"><i
 								class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
-						<li><a href="${pageContext.request.contextPath}/findAvailability"><i
+						<li><a href="${pageContext.request.contextPath}/user/findAvailability"><i
 								class="fa fa-edit fa-fw"></i> Cerca Disponibilit&agrave;</a></li>
-						<li><a href="${pageContext.request.contextPath}/addBooking"><i
+						<li><a href="${pageContext.request.contextPath}/user/addBooking"><i
 								class="fa fa-tasks fa-fw"></i> Aggiungi Prenotazione</a></li>
-						<li><a href="${pageContext.request.contextPath}/bookingsUser"><i
+						<li><a href="${pageContext.request.contextPath}/user/bookings"><i
 								class="fa fa-table fa-fw"></i> Prenotazioni</a></li>
 					</ul>
 				</div>

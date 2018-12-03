@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Prenotazioni</title>
+<title>${title}</title>
 </head>
 <body>
 
@@ -15,7 +15,7 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <a href="${pageContext.request.contextPath}/addBooking"><button type="button" class="btn btn-outline btn-info">Aggiungi una Prenotazione</button></a>
+            <a href="${pageContext.request.contextPath}/user/addBooking"><button type="button" class="btn btn-outline btn-info">Aggiungi una Prenotazione</button></a>
             <button type="button" class="btn btn-outline btn-info">Prenotazioni in atto</button>
             <button type="button" class="btn btn-outline btn-info">Cronologia Prenotazioni</button>
             <!-- /.row -->

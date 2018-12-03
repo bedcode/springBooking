@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Dashboard</title>
+<title>${title}</title>
 </head>
 <body>
         <div id="page-wrapper">
@@ -29,7 +29,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="${pageContext.request.contextPath}/bookings">
+                        <a href="${pageContext.request.contextPath}/admin/bookings">
                             <div class="panel-footer">
                                 <span class="pull-left">Vedi Dettagli</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="${pageContext.request.contextPath}/resource">
+                        <a href="${pageContext.request.contextPath}/admin/resource">
                             <div class="panel-footer">
                                 <span class="pull-left">Vedi Dettagli</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

@@ -54,7 +54,7 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand"
-					href="${pageContext.request.contextPath}/index">Admin</a>
+					href="${pageContext.request.contextPath}/admin/index">Admin</a>
 			</div>
 			<!-- /.navbar-header -->
 

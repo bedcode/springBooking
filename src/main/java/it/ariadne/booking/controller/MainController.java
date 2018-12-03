@@ -51,49 +51,28 @@ public class MainController {
 		return "403Page";
 	}
 	
-    @RequestMapping(value = { "/index" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/admin/index" }, method = RequestMethod.GET)
 	public String homePage(Model model) {
 		return "indexPage";
 	}
     
-    @RequestMapping(value = { "/addResource" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/admin/addResource" }, method = RequestMethod.GET)
 	public String addResourcePage(Model model) {
 		return "addResourcePage";
 	}
     
-    @RequestMapping(value = { "/resource" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/admin/resource" }, method = RequestMethod.GET)
 	public String resourcePage(Model model) {
 		return "resourcePage";
 	}
      
-    @RequestMapping(value = { "/bookings" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/admin/bookings" }, method = RequestMethod.GET)
 	public String bookingsPage(Model model) {
 		return "bookingsPage";
 	}
     
-    
-    @RequestMapping(value = { "/indexUser" }, method = RequestMethod.GET)
-	public String homeUserPage(Model model) {
-		return "indexUserPage";
-	}
-    
-    @RequestMapping(value = { "/findAvailability" }, method = RequestMethod.GET)
-	public String findAvailabilityPage(Model model) {
-		return "findAvailabilityPage";
-	}
-    
-    @RequestMapping(value = { "/addBooking" }, method = RequestMethod.GET)
-	public String addBookingPage(Model model) {
-		return "addBookingPage";
-	}
-     
-    @RequestMapping(value = { "/bookingsUser" }, method = RequestMethod.GET)
-	public String bookingsUserPage(Model model) {
-		return "bookingsUserPage";
-	}
-    
     @ResponseBody
-    @RequestMapping(value = { "/resourcelist" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/admin/resourcelist" }, method = RequestMethod.GET)
 	public TableResponse index() {
 		ArrayList<Car> all = (ArrayList<Car>) resourceDAO.findAll();
 		tableResponse.setDraw(0);
@@ -102,5 +81,26 @@ public class MainController {
 		tableResponse.setData(all);
 
 		return tableResponse;
+	}
+    
+    
+    @RequestMapping(value = { "/user/index" }, method = RequestMethod.GET)
+	public String homeUserPage(Model model) {
+		return "indexUserPage";
+	}
+    
+    @RequestMapping(value = { "/user/findAvailability" }, method = RequestMethod.GET)
+	public String findAvailabilityPage(Model model) {
+		return "findAvailabilityPage";
+	}
+    
+    @RequestMapping(value = { "/user/addBooking" }, method = RequestMethod.GET)
+	public String addBookingPage(Model model) {
+		return "addBookingPage";
+	}
+     
+    @RequestMapping(value = { "/user/bookings" }, method = RequestMethod.GET)
+	public String bookingsUserPage(Model model) {
+		return "bookingsUserPage";
 	}
 }
