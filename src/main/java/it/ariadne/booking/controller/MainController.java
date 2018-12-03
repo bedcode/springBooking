@@ -3,6 +3,9 @@ package it.ariadne.booking.controller;
 import java.security.Principal;
 import java.util.ArrayList;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
@@ -82,6 +85,16 @@ public class MainController {
 		tableResponse.setData(all);
 
 		return tableResponse;
+	}
+    
+    @RequestMapping(value = { "/admin/addResourceDB" }, method = RequestMethod.POST)
+	public String addResourceDB(Model model, HttpServletRequest request) {
+    	Resource r = new Resource();
+    	r.setName(request.getParameter("name"));
+    	r.setType(ResourceEnum.valueOf(request.getParameter("type").toUpperCase()));
+    	r.setBoundary(Integer.parseInt((request.getParameter("boundary"))));
+    	resourceDAO.save(r);
+    	return "resourcePage";
 	}
     
     
