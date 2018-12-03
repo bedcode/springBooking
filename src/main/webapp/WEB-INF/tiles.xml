@@ -9,7 +9,7 @@
 	<definition name="baseLogin.definition"
 		template="/WEB-INF/layouts/classic.jsp">
 		<put-attribute name="title" value="" />
-		<put-attribute name="header" value="" />
+		<put-attribute name="header" value="/WEB-INF/basefragments/_headerLogin.jsp" />
 		<put-attribute name="menu" value="" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/basefragments/_footer.jsp" />
@@ -46,6 +46,13 @@
 		<put-attribute name="title" value="Login" />
 		<put-attribute name="body"
 			value="/WEB-INF/bodyfragments/_login.jsp" />
+	</definition>
+	
+	<!-- 403 Page -->
+	<definition name="403Page" extends="baseLogin.definition">
+		<put-attribute name="title" value="403" />
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_403Page.jsp" />
 	</definition>
 
 	<!-- Index Page -->

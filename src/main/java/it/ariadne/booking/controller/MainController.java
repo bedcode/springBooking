@@ -31,12 +31,6 @@ public class MainController {
 		model.addAttribute("title", "Login");
 		return "loginPage";
 	}
-
-	@RequestMapping(value = {"/logoutSuccessful"}, method = RequestMethod.GET)
-	public String logoutSuccessfulPage(Model model) {
-		model.addAttribute("title", "Logout");
-		return "logoutSuccessfulPage";
-	}
 	
 	@RequestMapping(value = {"/403"}, method = RequestMethod.GET)
 	public String accessDenied(Model model, Principal principal) {

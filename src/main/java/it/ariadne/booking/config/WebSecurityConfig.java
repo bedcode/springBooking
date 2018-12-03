@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
@@ -48,29 +49,39 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// The pages does not require login
 		http.authorizeRequests().antMatchers("/", "/login", "/logout").permitAll();
 
+		// For admin only.
+		http.authorizeRequests().antMatchers("/index", "/addResource", "/resource", "/bookings")
+		.access("hasRole('ROLE_ADMIN')")
+	    .and().formLogin()//
+		// Submit URL of login page.
+		.loginProcessingUrl("/j_spring_security_check") // Submit URL
+		.loginPage("/login")//
+		.successHandler(this.getSuccessHandler())//
+		.failureUrl("/login?error=true")//
+	    .usernameParameter("username")//
+		.passwordParameter("password")
+		// Config for Logout Page
+		.and().logout().logoutUrl("/logout").logoutSuccessUrl("/login");
+		
 		// For user only.
 		// If no login, it will redirect to /login page.
-		http.authorizeRequests().antMatchers("/indexUser", "/findAvailability", "/addBooking", "/bookingsUser").access("hasAnyRole('ROLE_USER')");
-
-		// For admin only.
-		http.authorizeRequests().antMatchers("/index", "/addResource", "/resource", "/bookings").access("hasRole('ROLE_ADMIN')");
+		http.authorizeRequests().antMatchers("/indexUser", "/findAvailability", "/addBooking", "/bookingsUser")
+		.access("hasRole('ROLE_USER')")
+		.and().formLogin()//
+		// Submit URL of login page.
+		.loginProcessingUrl("/j_spring_security_check") // Submit URL
+		.loginPage("/login")//
+		.successHandler(this.getSuccessHandler())//
+		.failureUrl("/login?error=true")//
+		.usernameParameter("username")//
+		.passwordParameter("password")
+		// Config for Logout Page
+		.and().logout().logoutUrl("/logout").logoutSuccessUrl("/login");
 
 		// When the user has logged in as XX.
 		// But access a page that requires role YY,
 		// AccessDeniedException will be thrown.
 		http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
-
-		// Config for Login Form
-		http.authorizeRequests().and().formLogin()//
-				// Submit URL of login page.
-				.loginProcessingUrl("/j_spring_security_check") // Submit URL
-				.loginPage("/login")//
-				.defaultSuccessUrl("/index")//
-				.failureUrl("/login?error=true")//
-				.usernameParameter("username")//
-				.passwordParameter("password")
-				// Config for Logout Page
-				.and().logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful");
 
 		// Config Remember Me.
 		http.authorizeRequests().and() //
@@ -85,5 +96,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		db.setDataSource(dataSource);
 		return db;
 	}
+	
+	private AuthenticationSuccessHandler getSuccessHandler() {
+        return new RoleBasedAuthenticationSuccessHandler(
+                    "/indexUser",
+                    "/index",
+                    "ROLE_ADMIN"                
+                );
+
+    }
 
 }

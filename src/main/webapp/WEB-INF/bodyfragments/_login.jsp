@@ -24,7 +24,7 @@
 								</div>
 								<div class="form-group">
 									<input class="form-control" placeholder="Password"
-										name="password" type="password" value="">
+										name="password" type="password">
 								</div>
 								<div class="checkbox">
 									<label> <input name="remember" type="checkbox"
