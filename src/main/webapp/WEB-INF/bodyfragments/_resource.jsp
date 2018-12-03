@@ -61,7 +61,7 @@
             "columns": [
                { "data": "type" },
                { "data": "name" },
-               { "data": "constraint" },
+               { "data": "boundary" },
                {"defaultContent": '<button type="button" class="btn btn-default btn-circle" onclick=""><i class="fa fa-pencil"></i></button>'},
                {"defaultContent": '<button type="button" class="btn btn-default btn-circle" onclick=""><i class="glyphicon glyphicon-trash"></i></button>'}
             ]

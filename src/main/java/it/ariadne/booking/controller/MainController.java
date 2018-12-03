@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import it.ariadne.booking.dao.ResourceDAO;
-import it.ariadne.booking.entity.Car;
+import it.ariadne.booking.entity.Resource;
+import it.ariadne.booking.entity.ResourceEnum;
 import it.ariadne.booking.utils.TableResponse;
 import it.ariadne.booking.utils.WebUtils;
 
@@ -73,8 +74,8 @@ public class MainController {
     
     @ResponseBody
     @RequestMapping(value = { "/admin/resourcelist" }, method = RequestMethod.GET)
-	public TableResponse index() {
-		ArrayList<Car> all = (ArrayList<Car>) resourceDAO.findAll();
+	public TableResponse index(Model model) {
+		ArrayList<Resource> all = (ArrayList<Resource>) resourceDAO.findAll();
 		tableResponse.setDraw(0);
 		tableResponse.setRecordsTotal(all.size());
 		tableResponse.setRecordsFiltered(all.size());
