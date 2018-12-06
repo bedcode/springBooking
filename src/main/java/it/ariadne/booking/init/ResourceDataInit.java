@@ -10,12 +10,12 @@ import it.ariadne.booking.entity.Resource;
 import it.ariadne.booking.entity.ResourceEnum;
 
 @Component
-public class DataInit implements ApplicationRunner {
+public class ResourceDataInit implements ApplicationRunner {
 
 	private ResourceDAO resourceDAO;
 	
 	@Autowired
-    public DataInit(ResourceDAO resourceDAO) {
+    public ResourceDataInit(ResourceDAO resourceDAO) {
         this.resourceDAO = resourceDAO;
     }
 

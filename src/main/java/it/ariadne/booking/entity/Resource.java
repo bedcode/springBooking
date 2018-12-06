@@ -13,7 +13,7 @@ public class Resource {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id", nullable = false)
+    @Column(name = "Resource_Id", nullable = false)
     private Long id;
 
 	@Column(name = "Type", length=64, nullable = false)

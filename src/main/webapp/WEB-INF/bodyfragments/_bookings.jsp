@@ -49,13 +49,13 @@
 	<script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            "ajax": "../ajax/bookings.json",
+            "ajax": "/admin/bookinglist",
             "columns": [
                { "data": "id" },
-               { "data": "Risorsa" },
-               { "data": "Utente" },
-               { "data": "Data Inizio" },
-               { "data": "Data Fine" }
+               { "data": "resource" },
+               { "data": "appUser" },
+               { "data": "startDate" },
+               { "data": "endDate" }
             ]
         });
     });

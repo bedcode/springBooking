@@ -2,9 +2,9 @@ package it.ariadne.booking.controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import it.ariadne.booking.dao.BookingDAO;
 import it.ariadne.booking.dao.ResourceDAO;
+import it.ariadne.booking.entity.BookingPrinter;
+import it.ariadne.booking.entity.Booking;
 import it.ariadne.booking.entity.Resource;
 import it.ariadne.booking.entity.ResourceEnum;
 import it.ariadne.booking.utils.TableResponse;
@@ -27,9 +30,13 @@ public class MainController {
 
 	@Autowired
 	ResourceDAO resourceDAO;
+	@Autowired
+	BookingDAO bookingDAO;
 
 	@Autowired
-	TableResponse tableResponse;
+	TableResponse<Resource> tableResource;
+	@Autowired
+	TableResponse<BookingPrinter> tableBooking;
 
 	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
 	public String loginPage(Model model) {
@@ -83,14 +90,14 @@ public class MainController {
 
 	@ResponseBody
 	@RequestMapping(value = { "/admin/resourcelist" }, method = RequestMethod.GET)
-	public TableResponse index(Model model) {
-		ArrayList<Resource> all = (ArrayList<Resource>) resourceDAO.findAll();
-		tableResponse.setDraw(0);
-		tableResponse.setRecordsTotal(all.size());
-		tableResponse.setRecordsFiltered(all.size());
-		tableResponse.setData(all);
+	public TableResponse<Resource> resourceTable(Model model) {
+		ArrayList<Resource> resources = (ArrayList<Resource>) resourceDAO.findAll();
+		tableResource.setDraw(0);
+		tableResource.setRecordsTotal(resources.size());
+		tableResource.setRecordsFiltered(resources.size());
+		tableResource.setData(resources);
 
-		return tableResponse;
+		return tableResource;
 	}
 
 	@RequestMapping(value = { "/admin/addResourceDB" }, method = RequestMethod.POST)
@@ -131,6 +138,28 @@ public class MainController {
 			model.addAttribute("deleteError", error);
 			return "editResourcePage";
 		}
+	}
+
+	@ResponseBody
+	@RequestMapping(value = { "/admin/bookinglist" }, method = RequestMethod.GET)
+	public TableResponse<BookingPrinter> bookingTable(Model model) {
+		ArrayList<Booking> bookings = (ArrayList<Booking>) bookingDAO.findAll();
+		List<BookingPrinter> bookingPrinter = new ArrayList<>();
+		tableBooking.setDraw(0);
+		tableBooking.setRecordsTotal(bookings.size());
+		tableBooking.setRecordsFiltered(bookings.size());
+		for (Booking booking : bookings) {
+			BookingPrinter b = new BookingPrinter();
+			b.setId(booking.getId());
+			b.setStartDate(booking.getStartDate());
+			b.setEndDate(booking.getEndDate());
+			b.setResource(booking.getResource().getName());
+			b.setAppUser(booking.getAppUser().getUserName());
+			bookingPrinter.add(b);
+		}
+		tableBooking.setData(bookingPrinter);
+
+		return tableBooking;
 	}
 
 	@RequestMapping(value = { "/user/index" }, method = RequestMethod.GET)
