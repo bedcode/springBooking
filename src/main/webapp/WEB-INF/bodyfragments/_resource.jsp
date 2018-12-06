@@ -32,6 +32,7 @@
 								id="dataTables-example">
 								<thead>
 									<tr>
+									    <th>Id</th>
 										<th>Tipo Risorsa</th>
 										<th>Nome Risorsa</th>
 										<th>Limite</th>
@@ -54,16 +55,17 @@
 	<!-- /#wrapper -->
 
 	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
-	<script>
-    $(document).ready(function() {
+	<script>	
+	$(document).ready(function() {
         $('#dataTables-example').DataTable({
             "ajax": "/admin/resourcelist",
             "columns": [
+               { "data": "id" },
                { "data": "type" },
                { "data": "name" },
                { "data": "boundary" },
-               {"defaultContent": '<button type="button" class="btn btn-default btn-circle" onclick=""><i class="fa fa-pencil"></i></button>'},
-               {"defaultContent": '<button type="button" class="btn btn-default btn-circle" onclick=""><i class="glyphicon glyphicon-trash"></i></button>'}
+               {"defaultContent": '<button type="button" class="btn btn-default btn-circle"><i class="fa fa-pencil"></i></button>'},
+               {"defaultContent": '<button type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-trash"></i></button>'}
             ]
         });
     });

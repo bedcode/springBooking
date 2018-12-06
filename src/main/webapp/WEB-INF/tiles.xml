@@ -75,6 +75,13 @@
 		<put-attribute name="body"
 			value="/WEB-INF/bodyfragments/_resource.jsp" />
 	</definition>
+	
+	<!-- Edit Resource Page -->
+	<definition name="editResourcePage" extends="base.definition">
+		<put-attribute name="title" value="Modifica/Elimina Risorsa" />
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_editResource.jsp" />
+	</definition>
 
     <!-- Bookings Page -->
 	<definition name="bookingsPage" extends="base.definition">

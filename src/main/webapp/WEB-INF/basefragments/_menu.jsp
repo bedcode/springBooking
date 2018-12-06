@@ -27,6 +27,8 @@
 								class="fa fa-edit fa-fw"></i> Aggiungi Risorsa</a></li>
 						<li><a href="${pageContext.request.contextPath}/admin/resource"><i
 								class="fa fa-tasks fa-fw"></i> Risorse</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/editResource"><i
+								class="fa fa-edit fa-fw"></i> Modifica/Elimina Risorsa</a></li>
 						<li><a href="${pageContext.request.contextPath}/admin/bookings"><i
 								class="fa fa-table fa-fw"></i> Prenotazioni</a></li>
 					</ul>
