@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import it.ariadne.booking.dao.AppUserDAO;
 import it.ariadne.booking.dao.BookingDAO;
 import it.ariadne.booking.dao.ResourceDAO;
-import it.ariadne.booking.entity.BookingPrinter;
+import it.ariadne.booking.entity.AppUser;
 import it.ariadne.booking.entity.Booking;
+import it.ariadne.booking.entity.BookingPrinter;
 import it.ariadne.booking.entity.Resource;
 import it.ariadne.booking.entity.ResourceEnum;
 import it.ariadne.booking.utils.TableResponse;
@@ -32,6 +34,8 @@ public class MainController {
 	ResourceDAO resourceDAO;
 	@Autowired
 	BookingDAO bookingDAO;
+	@Autowired
+	AppUserDAO appUserDAO;
 
 	@Autowired
 	TableResponse<Resource> tableResource;
@@ -181,11 +185,14 @@ public class MainController {
 	public String bookingsUserPage(Model model) {
 		return "bookingsUserPage";
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = { "/user/bookinglist" }, method = RequestMethod.GET)
-	public TableResponse<BookingPrinter> bookingUSerTable(Model model) {
-		ArrayList<Booking> bookings = (ArrayList<Booking>) bookingDAO.findAll();
+	public TableResponse<BookingPrinter> bookingUserTable(Model model, Principal principal) {
+		String userName = principal.getName();
+		AppUser appUser = appUserDAO.findUserAccount(userName);
+
+		ArrayList<Booking> bookings = (ArrayList<Booking>) bookingDAO.findByAppUser(appUser);
 		List<BookingPrinter> bookingPrinter = new ArrayList<>();
 		tableBooking.setDraw(0);
 		tableBooking.setRecordsTotal(bookings.size());

@@ -42,10 +42,24 @@ public class BookingDataInit implements ApplicationRunner {
 			Long id = Long.valueOf(12);
 			Optional<Resource> r = resourceDAO.findById(id);
 			b1.setResource(r.get());
-			AppUser appUser = appUserDAO.findUserAccount("dbuser1");
-			b1.setAppUser(appUser);
+			AppUser appUser1 = appUserDAO.findUserAccount("dbuser1");
+			b1.setAppUser(appUser1);
 
 			bookingDAO.save(b1);
+			
+			
+			Booking b2 = new Booking();
+ 			start = new DateTime(2018, 12, 24, 14, 00);
+        	b2.setStartDate(start.toDate());
+        	end = new DateTime(2018, 12, 24, 16, 00);
+ 	    	b2.setEndDate(end.toDate());
+			id = Long.valueOf(14);
+			r = resourceDAO.findById(id);
+			b2.setResource(r.get());
+			AppUser appUser2 = appUserDAO.findUserAccount("dbuser2");
+			b2.setAppUser(appUser2);
+
+			bookingDAO.save(b2);
 		}
 
 	}
