@@ -181,4 +181,26 @@ public class MainController {
 	public String bookingsUserPage(Model model) {
 		return "bookingsUserPage";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = { "/user/bookinglist" }, method = RequestMethod.GET)
+	public TableResponse<BookingPrinter> bookingUSerTable(Model model) {
+		ArrayList<Booking> bookings = (ArrayList<Booking>) bookingDAO.findAll();
+		List<BookingPrinter> bookingPrinter = new ArrayList<>();
+		tableBooking.setDraw(0);
+		tableBooking.setRecordsTotal(bookings.size());
+		tableBooking.setRecordsFiltered(bookings.size());
+		for (Booking booking : bookings) {
+			BookingPrinter b = new BookingPrinter();
+			b.setId(booking.getId());
+			b.setStartDate(booking.getStartDate());
+			b.setEndDate(booking.getEndDate());
+			b.setResource(booking.getResource().getName());
+			b.setAppUser(booking.getAppUser().getUserName());
+			bookingPrinter.add(b);
+		}
+		tableBooking.setData(bookingPrinter);
+
+		return tableBooking;
+	}
 }
