@@ -25,7 +25,7 @@
 								<div class="col-lg-4">
 								<h4><font color="red"><b>${deleteError}</b></font></h4>
 									<div class="form-group">
-										<label>ID Risorsa</label> <input class="form-control" name="id"
+										<label>ID Risorsa</label> <input class="form-control" name="id" type="number" min="1"
 											placeholder="Inserire l'ID della risorsa" required autofocus>
 									</div>
 								</div>

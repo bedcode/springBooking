@@ -181,20 +181,28 @@ public class MainController {
 	public String addBookingPage(Model model) {
 		return "addBookingPage";
 	}
-	
+
 	@RequestMapping(value = { "/user/deleteBooking" }, method = RequestMethod.GET)
 	public String deleteBookingPage(Model model) {
 		return "deleteBookingPage";
 	}
-	
+
 	@RequestMapping(value = { "/user/deleteBookingDB" }, method = RequestMethod.POST)
-	public String deleteBookingDB(Model model, HttpServletRequest request) {
+	public String deleteBookingDB(Model model, HttpServletRequest request, Principal principal) {
 		Long id = Long.valueOf((request.getParameter("id")));
-		if (bookingDAO.existsById(id)) {
-			bookingDAO.deleteById(id);
-			return "bookingsUserPage";
+		String userName = principal.getName();
+		Optional<Booking> b = bookingDAO.findById(id);
+		if (b.isPresent()) {
+			if (b.get().getAppUser().getUserName().equals(userName)) {
+				bookingDAO.deleteById(id);
+				return "bookingsUserPage";
+			} else {
+				String error = "Prenotazioni non eliminata, controlla l'ID";
+				model.addAttribute("deleteError", error);
+				return "deleteBookingPage";
+			}
 		} else {
-			String error = "ID non esistente";
+			String error = "Prenotazioni non eliminata, controlla l'ID";
 			model.addAttribute("deleteError", error);
 			return "deleteBookingPage";
 		}
@@ -204,7 +212,7 @@ public class MainController {
 	public String bookingsUserPage(Model model) {
 		return "bookingsUserPage";
 	}
-	
+
 	@RequestMapping(value = { "/user/futureBookings" }, method = RequestMethod.GET)
 	public String futureBookingsUserPage(Model model) {
 		return "futureBookingsPage";
@@ -214,7 +222,7 @@ public class MainController {
 	public String historyBookingsUserPage(Model model) {
 		return "historyBookingsPage";
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = { "/user/bookinglist" }, method = RequestMethod.GET)
 	public TableResponse<BookingPrinter> bookingUserTable(Model model, Principal principal) {
@@ -239,7 +247,7 @@ public class MainController {
 
 		return tableBooking;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = { "/user/futureBookinglist" }, method = RequestMethod.GET)
 	public TableResponse<BookingPrinter> futureBookingUserTable(Model model, Principal principal) {
@@ -247,7 +255,8 @@ public class MainController {
 		AppUser appUser = appUserDAO.findUserAccount(userName);
 
 		Date start = new Date();
-		ArrayList<Booking> bookings = (ArrayList<Booking>) bookingDAO.findByAppUserAndStartDateGreaterThanEqual(appUser, start);
+		ArrayList<Booking> bookings = (ArrayList<Booking>) bookingDAO.findByAppUserAndStartDateGreaterThanEqual(appUser,
+				start);
 		List<BookingPrinter> bookingPrinter = new ArrayList<>();
 		tableBooking.setDraw(0);
 		tableBooking.setRecordsTotal(bookings.size());
@@ -265,7 +274,7 @@ public class MainController {
 
 		return tableBooking;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = { "/user/historyBookinglist" }, method = RequestMethod.GET)
 	public TableResponse<BookingPrinter> historyBookingUserTable(Model model, Principal principal) {
