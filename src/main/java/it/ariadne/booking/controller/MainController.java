@@ -180,6 +180,11 @@ public class MainController {
 	public String addBookingPage(Model model) {
 		return "addBookingPage";
 	}
+	
+	@RequestMapping(value = { "/user/deleteBooking" }, method = RequestMethod.GET)
+	public String deleteBookingPage(Model model) {
+		return "deleteBookingPage";
+	}
 
 	@RequestMapping(value = { "/user/bookings" }, method = RequestMethod.GET)
 	public String bookingsUserPage(Model model) {
