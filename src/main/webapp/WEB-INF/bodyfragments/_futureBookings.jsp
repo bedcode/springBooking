@@ -57,7 +57,7 @@
                { "data": "resource" },
                { "data": "startDate" },
                { "data": "endDate" },
-               {"defaultContent": '<a href="${pageContext.request.contextPath}/user/deleteBooking">button type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-trash"></i></button></a>'}
+               {"defaultContent": '<a href="${pageContext.request.contextPath}/user/deleteBooking"><button type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-trash"></i></button></a>'}
             ]
         });
     });
