@@ -50,7 +50,7 @@
     <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            "ajax": "/user/bookinglist",
+            "ajax": "/user/historyBookinglist",
             "columns": [
                { "data": "id" },
                { "data": "resource" },
