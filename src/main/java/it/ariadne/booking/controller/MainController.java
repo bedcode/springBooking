@@ -186,6 +186,19 @@ public class MainController {
 	public String deleteBookingPage(Model model) {
 		return "deleteBookingPage";
 	}
+	
+	@RequestMapping(value = { "/user/deleteBookingDB" }, method = RequestMethod.POST)
+	public String deleteBookingDB(Model model, HttpServletRequest request) {
+		Long id = Long.valueOf((request.getParameter("id")));
+		if (bookingDAO.existsById(id)) {
+			bookingDAO.deleteById(id);
+			return "bookingsUserPage";
+		} else {
+			String error = "ID non esistente";
+			model.addAttribute("deleteError", error);
+			return "deleteBookingPage";
+		}
+	}
 
 	@RequestMapping(value = { "/user/bookings" }, method = RequestMethod.GET)
 	public String bookingsUserPage(Model model) {

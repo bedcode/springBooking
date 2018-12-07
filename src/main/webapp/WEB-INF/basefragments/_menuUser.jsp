@@ -27,6 +27,8 @@
 								class="fa fa-edit fa-fw"></i> Cerca Disponibilit&agrave;</a></li>
 						<li><a href="${pageContext.request.contextPath}/user/addBooking"><i
 								class="fa fa-tasks fa-fw"></i> Aggiungi Prenotazione</a></li>
+						<li><a href="${pageContext.request.contextPath}/user/deleteBooking"><i
+								class="fa fa-tasks fa-fw"></i> Elimina Prenotazione</a></li>
 						<li><a href="${pageContext.request.contextPath}/user/bookings"><i
 								class="fa fa-table fa-fw"></i> Prenotazioni</a></li>
 						<li><a href="${pageContext.request.contextPath}/user/futureBookings"><i

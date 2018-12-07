@@ -112,6 +112,13 @@
 			value="/WEB-INF/bodyfragments/_addBooking.jsp" />
 	</definition>
 	
+	<!-- Add Booking Page -->
+	<definition name="deleteBookingPage" extends="baseUser.definition">
+		<put-attribute name="title" value="Elimina Prenotazione" />
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_deleteBooking.jsp" />
+	</definition>
+	
 	<!-- Bookings User Page -->
 	<definition name="bookingsUserPage" extends="baseUser.definition">
 		<put-attribute name="title" value="Prenotazioni" />
