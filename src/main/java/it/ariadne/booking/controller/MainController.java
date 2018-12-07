@@ -8,6 +8,11 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.joda.time.DateTime;
+import org.joda.time.Interval;
+import org.joda.time.Period;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
@@ -299,5 +304,62 @@ public class MainController {
 		tableBooking.setData(bookingPrinter);
 
 		return tableBooking;
+	}
+
+	@RequestMapping(value = { "/user/findAvailabilityForm" }, method = RequestMethod.POST)
+	public String findAvailabilityForm(Model model, HttpServletRequest request) {
+		String dateMessage = "";
+		String errorMessage = "";
+		Optional<Resource> resource = resourceDAO.findById(Long.valueOf(request.getParameter("id")));
+		if (resource.isPresent()) {
+			ArrayList<Booking> bookings = (ArrayList<Booking>) bookingDAO.findByResource(resource.get());
+			DateTime startDate = new DateTime(request.getParameter("startDate"));
+			DateTime endDate = new DateTime(request.getParameter("endDate"));
+			int duration = Integer.parseInt(request.getParameter("duration"));
+
+			if (endDate.isBefore(startDate)) {
+				errorMessage = "Errore inserimento date";
+				model.addAttribute("errorMessage", errorMessage);
+				return "findAvailabilityPage";
+
+			}
+			DateTime start = startDate;
+			Period period = new Period(duration, 0, 0, 0);
+			Period checkPeriod = new Period().withHours(1);
+			boolean condition = true;
+			while (condition) {
+				DateTime end = start.plus(period);
+				if (end.isBefore(endDate)) {
+					if (this.getAvailability(start, end, bookings)) {
+						DateTimeFormatter df = DateTimeFormat.forPattern("dd-MM-yyyy HH:mm");
+						dateMessage = "Risorsa disponibile dal " + start.toString(df);
+						model.addAttribute("dateMessage", dateMessage);
+						return "findAvailabilityPage";
+					}
+					start = start.plus(checkPeriod);
+				} else {
+					dateMessage = "Nessuna disponibilità trovata";
+					model.addAttribute("dateMessage", dateMessage);
+					return "findAvailabilityPage";
+				}
+			}
+		}
+
+		errorMessage = "Risorsa non presente";
+		model.addAttribute("errorMessage", errorMessage);
+		return "findAvailabilityPage";
+	}
+
+	private boolean getAvailability(DateTime start, DateTime end, List<Booking> bookings) {
+		Interval interval = new Interval(start, end);
+		for (Booking b : bookings) {
+			DateTime s = new DateTime(b.getStartDate());
+			DateTime e = new DateTime(b.getEndDate());
+			Interval i = new Interval(s, e);
+			if (i.overlaps(interval)) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
