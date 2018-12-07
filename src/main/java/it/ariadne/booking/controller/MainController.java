@@ -350,6 +350,31 @@ public class MainController {
 		return "findAvailabilityPage";
 	}
 
+	@RequestMapping(value = { "/user/addBookingDB" }, method = RequestMethod.POST)
+	public String addBookingDB(Model model, HttpServletRequest request, Principal principal) {
+		String userName = principal.getName();
+		DateTime startDate = new DateTime(request.getParameter("startDate"));
+		DateTime endDate = new DateTime(request.getParameter("endDate"));
+		Optional<Resource> resource = resourceDAO.findById(Long.valueOf(request.getParameter("id")));
+		if (resource.isPresent() && endDate.isAfter(startDate)) {
+			ArrayList<Booking> bookings = (ArrayList<Booking>) bookingDAO.findByResource(resource.get());
+			if (this.getAvailability(startDate, endDate, bookings)) {
+				Booking b = new Booking();
+				b.setStartDate(startDate.toDate());
+				b.setEndDate(endDate.toDate());
+				b.setResource(resourceDAO.findById(Long.valueOf(request.getParameter("id"))).get());
+				AppUser appUser = appUserDAO.findUserAccount(userName);
+				b.setAppUser(appUser);
+				bookingDAO.save(b);
+				return "bookingsUserPage";
+			}
+		}
+		
+		String error = "Prenotazione non effettuata";
+		model.addAttribute("error", error);
+		return "addBookingPage";
+	}
+
 	private boolean getAvailability(DateTime start, DateTime end, List<Booking> bookings) {
 		Interval interval = new Interval(start, end);
 		for (Booking b : bookings) {
