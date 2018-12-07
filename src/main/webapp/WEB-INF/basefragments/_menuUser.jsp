@@ -35,6 +35,8 @@
 								class="fa fa-table fa-fw"></i> Prenotazioni Future</a></li>
 						<li><a href="${pageContext.request.contextPath}/user/historyBookings"><i
 								class="fa fa-table fa-fw"></i> Prenotazioni Passate</a></li>
+						<li><a href="${pageContext.request.contextPath}/user/resource"><i
+								class="fa fa-table fa-fw"></i> Risorse</a></li>
 					</ul>
 				</div>
 				<!-- /.sidebar-collapse -->

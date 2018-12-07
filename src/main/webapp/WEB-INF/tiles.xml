@@ -139,5 +139,12 @@
 		<put-attribute name="body"
 			value="/WEB-INF/bodyfragments/_historyBookings.jsp" />
 	</definition>
+	
+	<!-- Resource User Page -->
+	<definition name="resourceUserPage" extends="baseUser.definition">
+		<put-attribute name="title" value="Risorse" />
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_resourceUser.jsp" />
+	</definition>
 
 </tiles-definitions> 

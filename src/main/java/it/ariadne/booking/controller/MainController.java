@@ -227,6 +227,23 @@ public class MainController {
 	public String historyBookingsUserPage(Model model) {
 		return "historyBookingsPage";
 	}
+	
+	@RequestMapping(value = { "/user/resource" }, method = RequestMethod.GET)
+	public String resourceUserPage(Model model) {
+		return "resourceUserPage";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = { "/user/resourcelist" }, method = RequestMethod.GET)
+	public TableResponse<Resource> resourceUserTable(Model model) {
+		ArrayList<Resource> resources = (ArrayList<Resource>) resourceDAO.findAll();
+		tableResource.setDraw(0);
+		tableResource.setRecordsTotal(resources.size());
+		tableResource.setRecordsFiltered(resources.size());
+		tableResource.setData(resources);
+
+		return tableResource;
+	}
 
 	@ResponseBody
 	@RequestMapping(value = { "/user/bookinglist" }, method = RequestMethod.GET)
