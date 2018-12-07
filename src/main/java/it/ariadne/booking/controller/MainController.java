@@ -2,6 +2,7 @@ package it.ariadne.booking.controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -190,7 +191,17 @@ public class MainController {
 	public String bookingsUserPage(Model model) {
 		return "bookingsUserPage";
 	}
+	
+	@RequestMapping(value = { "/user/futureBookings" }, method = RequestMethod.GET)
+	public String futureBookingsUserPage(Model model) {
+		return "futureBookingsPage";
+	}
 
+	@RequestMapping(value = { "/user/historyBookings" }, method = RequestMethod.GET)
+	public String historyBookingsUserPage(Model model) {
+		return "historyBookingsPage";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = { "/user/bookinglist" }, method = RequestMethod.GET)
 	public TableResponse<BookingPrinter> bookingUserTable(Model model, Principal principal) {
@@ -198,6 +209,58 @@ public class MainController {
 		AppUser appUser = appUserDAO.findUserAccount(userName);
 
 		ArrayList<Booking> bookings = (ArrayList<Booking>) bookingDAO.findByAppUser(appUser);
+		List<BookingPrinter> bookingPrinter = new ArrayList<>();
+		tableBooking.setDraw(0);
+		tableBooking.setRecordsTotal(bookings.size());
+		tableBooking.setRecordsFiltered(bookings.size());
+		for (Booking booking : bookings) {
+			BookingPrinter b = new BookingPrinter();
+			b.setId(booking.getId());
+			b.setStartDate(booking.getStartDate());
+			b.setEndDate(booking.getEndDate());
+			b.setResource(booking.getResource().getName());
+			b.setAppUser(booking.getAppUser().getUserName());
+			bookingPrinter.add(b);
+		}
+		tableBooking.setData(bookingPrinter);
+
+		return tableBooking;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = { "/user/futureBookinglist" }, method = RequestMethod.GET)
+	public TableResponse<BookingPrinter> futureBookingUserTable(Model model, Principal principal) {
+		String userName = principal.getName();
+		AppUser appUser = appUserDAO.findUserAccount(userName);
+
+		Date start = new Date();
+		ArrayList<Booking> bookings = (ArrayList<Booking>) bookingDAO.findByAppUserAndStartDateGreaterThanEqual(appUser, start);
+		List<BookingPrinter> bookingPrinter = new ArrayList<>();
+		tableBooking.setDraw(0);
+		tableBooking.setRecordsTotal(bookings.size());
+		tableBooking.setRecordsFiltered(bookings.size());
+		for (Booking booking : bookings) {
+			BookingPrinter b = new BookingPrinter();
+			b.setId(booking.getId());
+			b.setStartDate(booking.getStartDate());
+			b.setEndDate(booking.getEndDate());
+			b.setResource(booking.getResource().getName());
+			b.setAppUser(booking.getAppUser().getUserName());
+			bookingPrinter.add(b);
+		}
+		tableBooking.setData(bookingPrinter);
+
+		return tableBooking;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = { "/user/historyBookinglist" }, method = RequestMethod.GET)
+	public TableResponse<BookingPrinter> historyBookingUserTable(Model model, Principal principal) {
+		String userName = principal.getName();
+		AppUser appUser = appUserDAO.findUserAccount(userName);
+
+		Date start = new Date();
+		ArrayList<Booking> bookings = (ArrayList<Booking>) bookingDAO.findByAppUserAndStartDateLessThan(appUser, start);
 		List<BookingPrinter> bookingPrinter = new ArrayList<>();
 		tableBooking.setDraw(0);
 		tableBooking.setRecordsTotal(bookings.size());

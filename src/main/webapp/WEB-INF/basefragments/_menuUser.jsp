@@ -29,6 +29,10 @@
 								class="fa fa-tasks fa-fw"></i> Aggiungi Prenotazione</a></li>
 						<li><a href="${pageContext.request.contextPath}/user/bookings"><i
 								class="fa fa-table fa-fw"></i> Prenotazioni</a></li>
+						<li><a href="${pageContext.request.contextPath}/user/futureBookings"><i
+								class="fa fa-table fa-fw"></i> Prenotazioni Future</a></li>
+						<li><a href="${pageContext.request.contextPath}/user/historyBookings"><i
+								class="fa fa-table fa-fw"></i> Prenotazioni Passate</a></li>
 					</ul>
 				</div>
 				<!-- /.sidebar-collapse -->

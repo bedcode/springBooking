@@ -118,5 +118,19 @@
 		<put-attribute name="body"
 			value="/WEB-INF/bodyfragments/_bookingsUser.jsp" />
 	</definition>
+	
+	<!-- Future Bookings User Page -->
+	<definition name="futureBookingsPage" extends="baseUser.definition">
+		<put-attribute name="title" value="Prenotazioni Future" />
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_futureBookings.jsp" />
+	</definition>
+	
+	<!-- History Bookings User Page -->
+	<definition name="historyBookingsPage" extends="baseUser.definition">
+		<put-attribute name="title" value="Prenotazioni Passate" />
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_historyBookings.jsp" />
+	</definition>
 
 </tiles-definitions> 

@@ -11,7 +11,7 @@
 	<div id="page-wrapper">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Prenotazioni</h1>
+				<h1 class="page-header">Prenotazioni Future</h1>
 			</div>
 			<!-- /.col-lg-12 -->
 		</div>
@@ -51,13 +51,13 @@
     <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            "ajax": "/user/bookinglist",
+            "ajax": "/user/futureBookinglist",
             "columns": [
                { "data": "id" },
                { "data": "resource" },
                { "data": "startDate" },
                { "data": "endDate" },
-               {"defaultContent": '<a href="${pageContext.request.contextPath}/user/deleteBooking"><button type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-trash"></i></button></a>'}
+               {"defaultContent": '<a href="${pageContext.request.contextPath}/user/deleteBooking">button type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-trash"></i></button></a>'}
             ]
         });
     });
