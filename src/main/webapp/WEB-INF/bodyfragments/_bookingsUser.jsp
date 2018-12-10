@@ -55,8 +55,18 @@
             "columns": [
                { "data": "id" },
                { "data": "resource" },
-               { "data": "startDate" },
-               { "data": "endDate" },
+               { "data": "startDate",
+            	 "render": function (data, type, row) {
+						   var x = new Date(data);
+						   return new Date(x.getTime() - (x.getTimezoneOffset() * 60000)).toJSON();
+            	 }
+               },
+               { "data": "endDate",
+            	 "render": function (data, type, row) {
+				    	   var x = new Date(data);
+					       return new Date(x.getTime() - (x.getTimezoneOffset() * 60000)).toJSON();
+            	 }
+               },
                {"defaultContent": '<a href="${pageContext.request.contextPath}/user/deleteBooking"><button type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-trash"></i></button></a>'}
             ]
         });

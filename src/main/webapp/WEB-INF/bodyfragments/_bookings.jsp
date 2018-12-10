@@ -54,8 +54,18 @@
                { "data": "id" },
                { "data": "resource" },
                { "data": "appUser" },
-               { "data": "startDate" },
-               { "data": "endDate" }
+               { "data": "startDate",
+              	 "render": function (data, type, row) {
+  						   var x = new Date(data);
+  						   return new Date(x.getTime() - (x.getTimezoneOffset() * 60000)).toJSON();
+              	 }
+               },
+               { "data": "endDate",
+              	 "render": function (data, type, row) {
+  				    	   var x = new Date(data);
+  					       return new Date(x.getTime() - (x.getTimezoneOffset() * 60000)).toJSON();
+              	 }
+               },
             ]
         });
     });
