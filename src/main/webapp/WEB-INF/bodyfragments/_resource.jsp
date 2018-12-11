@@ -32,7 +32,7 @@
 								id="dataTables-example">
 								<thead>
 									<tr>
-									    <th>Id</th>
+									    <th style="text-align: left">Id</th>
 										<th>Tipo Risorsa</th>
 										<th>Nome Risorsa</th>
 										<th>Limite</th>
@@ -59,6 +59,9 @@
 	$(document).ready(function() {
         $('#dataTables-example').DataTable({
             "ajax": "/admin/resourcelist",
+            "columnDefs": [
+                { className: "text-right", "targets": [0, 3] }
+              ],
             "columns": [
                { "data": "id" },
                { "data": "type" },

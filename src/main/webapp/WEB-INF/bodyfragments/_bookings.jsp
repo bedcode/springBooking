@@ -27,7 +27,7 @@
 							id="dataTables-example">
 							<thead>
 								<tr>
-									<th>ID</th>
+									<th style="text-align: left">ID</th>
 									<th>Risorsa</th>
 									<th>Utente</th>
 									<th>Data Inizio</th>
@@ -49,7 +49,10 @@
 	<script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            "ajax": "/admin/bookinglist",
+            "ajax": "/admin/bookinglist",          
+            "columnDefs": [
+                { className: "text-right", "targets": [0] }
+              ],
             "columns": [
                { "data": "id" },
                { "data": "resource" },

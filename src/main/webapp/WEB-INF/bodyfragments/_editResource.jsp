@@ -27,13 +27,13 @@
 								<h4><font color="red"><b>${editError}</b></font></h4>
 									<form role="form" method="POST" action="${pageContext.request.contextPath}/admin/editResourceDB">
 										<div class="form-group">
-											<label>Limite</label> <input type="number" min="1"
+											<label>ID</label> <input type="number" min="1"
 												class="form-control" name="id"
 												placeholder="Inserire l'ID della risorsa" autofocus required>
 										</div>
 									    <div class="form-group">
 											<label>Limite</label> <input type="number" min="1"
-												class="form-control" name="boundary"
+												class="form-control" name="boundary" style="text-align: right"
 												placeholder="Inserire il nuovo limite della risorsa" required>
 										</div>
 										<button type="submit" class="btn btn-primary btn-lg">Salva</button>
@@ -60,7 +60,7 @@
 										<div class="form-group">
 											<label>Limite</label> <input type="number" min="1"
 												class="form-control" name="id"
-												placeholder="Inserire l'ID della risorsa" autofocus required>
+												placeholder="Inserire l'ID della risorsa" autofocus required style="text-align: right">
 										</div>
 										<button type="submit" class="btn btn-primary btn-lg">Elimina</button>
 										<button type="reset"

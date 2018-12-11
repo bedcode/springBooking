@@ -29,7 +29,7 @@
 									<div class="form-group">
 										<label>ID Risorsa</label> <input class="form-control" type="number" min="1"
 											placeholder="Inserire l'ID della risorsa" required autofocus
-											name="id">
+											name="id" style="text-align: right">
 									</div>
 									<div class="form-group">
 										<label>Controlla da</label> <input class="form-control"

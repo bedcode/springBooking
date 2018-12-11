@@ -39,7 +39,7 @@
 										</div>
 									    <div class="form-group">
 											<label>Limite</label> <input type="number" min="1"
-												class="form-control" name="boundary"
+												class="form-control" name="boundary" style="text-align: right"
 												placeholder="Inserire il limite della risorsa" required>
 										</div>
 										<button type="submit" class="btn btn-primary btn-lg">Salva</button>

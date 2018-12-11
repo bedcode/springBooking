@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -30,7 +31,7 @@
 							id="dataTables-example">
 							<thead>
 								<tr>
-									<th>ID</th>
+									<th style="text-align: left">ID</th>
 									<th>Risorsa</th>
 									<th>Data Inizio</th>
 									<th>Data Fine</th>
@@ -52,6 +53,9 @@
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
             "ajax": "/user/bookinglist",
+            "columnDefs": [
+                { className: "text-right", "targets": [0] }
+              ],
             "columns": [
                { "data": "id" },
                { "data": "resource" },
