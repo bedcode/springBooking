@@ -48,6 +48,27 @@
 	<!-- /#page-wrapper -->
 
     <script>
+    function formatData(data) {
+		let x = new Date(data);
+		let day = x.getDate();
+	    let month = x.getMonth();
+        let year = x.getFullYear();
+        let hour = x.getHours();
+        let minutes = x.getMinutes();
+        let monthNames = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno",
+       	   "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"];
+        if (day < 10) {
+        	day = '0' + day;
+        }
+		if (hour < 10) {
+		    hour = '0' + hour;
+		}
+		if (minutes < 10) {
+		    minutes = '0' + minutes;
+		}
+		return day + " " + monthNames[month] + " " + year + " " + hour + ":" + minutes; 
+	}
+    
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
             "ajax": "/user/historyBookinglist",
@@ -58,17 +79,15 @@
                { "data": "id" },
                { "data": "resource" },
                { "data": "startDate",
-              	 "render": function (data, type, row) {
-  						   var x = new Date(data);
-  						   return new Date(x.getTime() - (x.getTimezoneOffset() * 60000)).toJSON();
-              	 }
+                	 "render": function (data) {
+                		 return formatData(data);
+  					       }
                  },
                  { "data": "endDate",
-              	 "render": function (data, type, row) {
-  				    	   var x = new Date(data);
-  					       return new Date(x.getTime() - (x.getTimezoneOffset() * 60000)).toJSON();
-              	 }
-                 },
+                	 "render": function (data) {
+                		 return formatData(data);
+  			       }
+               },
             ]
         });
     });
