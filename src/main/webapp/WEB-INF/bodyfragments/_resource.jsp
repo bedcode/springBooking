@@ -70,8 +70,8 @@
                { "data": "type" },
                { "data": "name" },
                { "data": "boundary" },
-               {"defaultContent": '<button type="button" class="btn btn-default btn-circle"><i class="fa fa-pencil"></i></button>'},
-               {"defaultContent": '<button type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-trash"></i></button>'}
+               {"defaultContent": '<a href="${pageContext.request.contextPath}/admin/editResource"><button type="button" class="btn btn-default btn-circle"><i class="fa fa-pencil"></i></button></a>'},
+               {"defaultContent": '<a href="${pageContext.request.contextPath}/admin/editResource"><button type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-trash"></i></button></a>'}
             ]
         });
     });
