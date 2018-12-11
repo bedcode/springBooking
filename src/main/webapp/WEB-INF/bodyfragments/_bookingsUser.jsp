@@ -74,6 +74,9 @@
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
             "ajax": "/user/bookinglist",
+            "language": {
+                "url":" //cdn.datatables.net/plug-ins/1.10.19/i18n/Italian.json"
+            }, 
             "columnDefs": [
                 { className: "text-right", "targets": [0] }
               ],
