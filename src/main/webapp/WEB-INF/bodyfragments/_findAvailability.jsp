@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Cerca Disponibilit&agrave;</title>
+<title>${title}</title>
 </head>
 <body>
 
@@ -21,52 +21,28 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Cerca Disponibilit&agrave;</div>
 					<div class="panel-body">
-						<form role="form">
+						<form role="form" method="POST"
+							action="${pageContext.request.contextPath}/user/findAvailabilityForm">
 							<div class="row">
 								<div class="col-lg-4">
+								    <h4><font color="green"><b>${dateMessage}</b></font></h4>
+								    <h4><font color="red"><b>${errorMessage}</b></font></h4>
 									<div class="form-group">
-										<label>Tipo Risorsa</label> <select class="form-control"
-											required>
-											<option value="" selected disable hidden>Scegli un
-												tipo</option>
-											<option value="Auto">Auto</option>
-											<option value="Aula">Aula</option>
-											<option value="Computer">Computer</option>
-										</select>
-									</div>
-									<div class="form-group">
-										<label>Data inizio prenotazione</label> <input type="date"
-											required>
-									</div>
-									<div class="form-group">
-										<label>Data fine prenotazione</label> <input type="date"
-											required>
+										<label>ID Risorsa</label> <input class="form-control" type="number" min="1"
+											placeholder="Inserire l'ID della risorsa" required autofocus
+											name="id" style="text-align: right">
 									</div>
 									<div class="form-group">
 										<label>Controlla da</label> <input class="form-control"
-											type="datetime-local">
-									</div>
-									<div class="form-comtrol">
-										<label>Limite Risorsa</label> <input class="form-control"
-											placeholder="Inserire il limite della risorsa">
-									</div>
-								</div>
-								<div class="col-lg-4">
-									<div class="form-group">
-										<label>Nome Risorsa</label> <input class="form-control"
-											placeholder="Inserire il nome della risorsa" required>
-									</div>
-									<div class="form-group">
-										<label>Ora inizio prenotazione</label> <input type="time"
-											required>
-									</div>
-									<div class="form-group">
-										<label>Ora fine prenotazione</label> <input type="time"
-											required>
+											type="datetime-local" required name="startDate">
 									</div>
 									<div class="form-group">
 										<label>Controlla fino a</label> <input class="form-control"
-											type="datetime-local">
+											type="datetime-local" required name="endDate">
+									</div>
+									<div class="form-group">
+										<label>Durata</label> <input class="form-control" type="number" min="1" max="24"
+											placeholder="Inserire la durata della risorsa" required name="duration" style="text-align: right">
 									</div>
 								</div>
 							</div>

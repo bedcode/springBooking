@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Dashboard</title>
+<title>${title}</title>
 </head>
 <body>
 
@@ -25,12 +25,11 @@
 								<i class="fa fa-tasks fa-5x"></i>
 							</div>
 							<div class="col-xs-9 text-right">
-								<div class="huge">12</div>
-								<div>Nuove prenotazioni</div>
+								<div class="huge">Prenotazioni</div>
 							</div>
 						</div>
 					</div>
-					<a href="${pageContext.request.contextPath}/bookingsUser">
+					<a href="${pageContext.request.contextPath}/user/bookings">
 						<div class="panel-footer">
 							<span class="pull-left">Vedi Dettagli</span> <span
 								class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -47,12 +46,11 @@
 								<i class="glyphicon glyphicon-list-alt fa-5x"></i>
 							</div>
 							<div class="col-xs-9 text-right">
-								<div class="huge">2</div>
-								<div>Ritardi</div>
+								<div class="huge">Risorse</div>
 							</div>
 						</div>
 					</div>
-					<a href="#">
+					<a href="${pageContext.request.contextPath}/user/resource">
 						<div class="panel-footer">
 							<span class="pull-left">Vedi Dettagli</span> <span
 								class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

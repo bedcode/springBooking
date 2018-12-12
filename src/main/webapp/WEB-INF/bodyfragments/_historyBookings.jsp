@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -12,7 +11,7 @@
 	<div id="page-wrapper">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Prenotazioni</h1>
+				<h1 class="page-header">Cronologia Prenotazioni</h1>
 			</div>
 			<!-- /.col-lg-12 -->
 		</div>
@@ -35,7 +34,6 @@
 									<th>Risorsa</th>
 									<th>Data Inizio</th>
 									<th>Data Fine</th>
-									<th>Elimina</th>
 								</tr>
 							</thead>
 						</table>
@@ -73,7 +71,7 @@
     
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            "ajax": "/user/bookinglist",
+            "ajax": "/user/historyBookinglist",
             "language": {
                 "url":" //cdn.datatables.net/plug-ins/1.10.19/i18n/Italian.json"
             }, 
@@ -85,15 +83,14 @@
                { "data": "resource" },
                { "data": "startDate",
                 	 "render": function (data) {
-                  		 return formatData(data);
-    			 }
+                		 return formatData(data);
+  					       }
+                 },
+                 { "data": "endDate",
+                	 "render": function (data) {
+                		 return formatData(data);
+  			       }
                },
-               { "data": "endDate",
-                 "render": function (data) {
-                  		 return formatData(data);
-    			  }
-               },
-               {"defaultContent": '<a href="${pageContext.request.contextPath}/user/deleteBooking"><button type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-trash"></i></button></a>'}
             ]
         });
     });

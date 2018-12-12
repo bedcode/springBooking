@@ -17,9 +17,6 @@
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
-			<a href="${pageContext.request.contextPath}/admin/addResource"><button
-					type="button" class="btn btn-outline btn-info">Aggiungi
-					una Risorsa</button></a>
 			<!-- /.row -->
 			<div class="row">
 				<div class="col-lg-12">
@@ -36,8 +33,6 @@
 										<th>Tipo Risorsa</th>
 										<th>Nome Risorsa</th>
 										<th>Limite</th>
-										<th>Modifica</th>
-										<th>Elimina</th>
 									</tr>
 								</thead>
 
@@ -58,7 +53,7 @@
 	<script>	
 	$(document).ready(function() {
         $('#dataTables-example').DataTable({
-            "ajax": "/admin/resourcelist",
+            "ajax": "/user/resourcelist",
             "language": {
                 "url":" //cdn.datatables.net/plug-ins/1.10.19/i18n/Italian.json"
             }, 
@@ -69,9 +64,7 @@
                { "data": "id" },
                { "data": "type" },
                { "data": "name" },
-               { "data": "boundary" },
-               {"defaultContent": '<a href="${pageContext.request.contextPath}/admin/editResource"><button type="button" class="btn btn-default btn-circle"><i class="fa fa-pencil"></i></button></a>'},
-               {"defaultContent": '<a href="${pageContext.request.contextPath}/admin/editResource"><button type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-trash"></i></button></a>'}
+               { "data": "boundary" }
             ]
         });
     });

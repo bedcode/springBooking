@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/", "/login", "/logout").permitAll();
 
 		// For admin only.
-		http.authorizeRequests().antMatchers("/index", "/addResource", "/resource", "/bookings")
+		http.authorizeRequests().antMatchers("/admin/**")
 		.access("hasRole('ROLE_ADMIN')")
 	    .and().formLogin()//
 		// Submit URL of login page.
@@ -65,7 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		// For user only.
 		// If no login, it will redirect to /login page.
-		http.authorizeRequests().antMatchers("/indexUser", "/findAvailability", "/addBooking", "/bookingsUser")
+		http.authorizeRequests().antMatchers("/user/**")
 		.access("hasRole('ROLE_USER')")
 		.and().formLogin()//
 		// Submit URL of login page.
@@ -99,8 +99,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	private AuthenticationSuccessHandler getSuccessHandler() {
         return new RoleBasedAuthenticationSuccessHandler(
-                    "/indexUser",
-                    "/index",
+                    "/user/index",
+                    "/admin/index",
                     "ROLE_ADMIN"                
                 );
 

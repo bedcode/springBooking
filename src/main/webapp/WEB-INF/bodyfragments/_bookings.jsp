@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Prenotazioni</title>
+<title>${title}</title>
 </head>
 <body>
 
@@ -27,7 +27,7 @@
 							id="dataTables-example">
 							<thead>
 								<tr>
-									<th>ID</th>
+									<th style="text-align: left">ID</th>
 									<th>Risorsa</th>
 									<th>Utente</th>
 									<th>Data Inizio</th>
@@ -47,15 +47,50 @@
 
 	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
 	<script>
-    $(document).ready(function() {
+	function formatData(data) {
+		let x = new Date(data);
+		let day = x.getDate();
+	    let month = x.getMonth();
+        let year = x.getFullYear();
+        let hour = x.getHours();
+        let minutes = x.getMinutes();
+        let monthNames = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno",
+       	   "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"];
+        if (day < 10) {
+        	day = '0' + day;
+        }
+		if (hour < 10) {
+		    hour = '0' + hour;
+		}
+		if (minutes < 10) {
+		    minutes = '0' + minutes;
+		}
+		return day + " " + monthNames[month] + " " + year + " " + hour + ":" + minutes; 
+	}
+	
+    $(document).ready(function() {    	
         $('#dataTables-example').DataTable({
-            "ajax": "../ajax/bookings.json",
+            "ajax": "/admin/bookinglist",
+            "language": {
+                "url":" //cdn.datatables.net/plug-ins/1.10.19/i18n/Italian.json"
+            },            
+            "columnDefs": [
+                { className: "text-right", "targets": [0] }
+              ],
             "columns": [
                { "data": "id" },
-               { "data": "Risorsa" },
-               { "data": "Utente" },
-               { "data": "Data Inizio" },
-               { "data": "Data Fine" }
+               { "data": "resource" },
+               { "data": "appUser" },
+               { "data": "startDate",
+              	 "render": function (data) {
+              		 return formatData(data);
+					       }
+               },
+               { "data": "endDate",
+              	 "render": function (data) {
+              		 return formatData(data);
+			       }
+               },
             ]
         });
     });

@@ -75,6 +75,13 @@
 		<put-attribute name="body"
 			value="/WEB-INF/bodyfragments/_resource.jsp" />
 	</definition>
+	
+	<!-- Edit Resource Page -->
+	<definition name="editResourcePage" extends="base.definition">
+		<put-attribute name="title" value="Modifica/Elimina Risorsa" />
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_editResource.jsp" />
+	</definition>
 
     <!-- Bookings Page -->
 	<definition name="bookingsPage" extends="base.definition">
@@ -105,11 +112,39 @@
 			value="/WEB-INF/bodyfragments/_addBooking.jsp" />
 	</definition>
 	
+	<!-- Add Booking Page -->
+	<definition name="deleteBookingPage" extends="baseUser.definition">
+		<put-attribute name="title" value="Elimina Prenotazione" />
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_deleteBooking.jsp" />
+	</definition>
+	
 	<!-- Bookings User Page -->
 	<definition name="bookingsUserPage" extends="baseUser.definition">
 		<put-attribute name="title" value="Prenotazioni" />
 		<put-attribute name="body"
 			value="/WEB-INF/bodyfragments/_bookingsUser.jsp" />
+	</definition>
+	
+	<!-- Future Bookings User Page -->
+	<definition name="futureBookingsPage" extends="baseUser.definition">
+		<put-attribute name="title" value="Prenotazioni Future" />
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_futureBookings.jsp" />
+	</definition>
+	
+	<!-- History Bookings User Page -->
+	<definition name="historyBookingsPage" extends="baseUser.definition">
+		<put-attribute name="title" value="Prenotazioni Passate" />
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_historyBookings.jsp" />
+	</definition>
+	
+	<!-- Resource User Page -->
+	<definition name="resourceUserPage" extends="baseUser.definition">
+		<put-attribute name="title" value="Risorse" />
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_resourceUser.jsp" />
 	</definition>
 
 </tiles-definitions> 

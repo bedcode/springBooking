@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Aggiungi Prenotazione</title>
+<title>${title}</title>
 </head>
 <body>
 
@@ -21,40 +21,23 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Nuova Prenotazione</div>
 					<div class="panel-body">
-						<form role="form">
+						<form role="form" method="POST"
+							action="${pageContext.request.contextPath}/user/addBookingDB">
 							<div class="row">
 								<div class="col-lg-4">
+									<h4><font color="red"><b>${error}</b></font></h4>
 									<div class="form-group">
-										<label>Tipo Risorsa</label> <select class="form-control"
-											required>
-											<option value="" selected disable hidden>Scegli un
-												tipo</option>
-											<option value="Auto">Auto</option>
-											<option value="Aula">Aula</option>
-											<option value="Computer">Computer</option>
-										</select>
+										<label>ID Risorsa</label> <input class="form-control" type="number" min="1"
+											placeholder="Inserire l'ID della risorsa" required autofocus
+											name="id" style="text-align: right">
 									</div>
 									<div class="form-group">
-										<label>Data inizio prenotazione</label> <input type="date"
-											required>
+										<label>Controlla da</label> <input class="form-control"
+											type="datetime-local" required name="startDate">
 									</div>
 									<div class="form-group">
-										<label>Data fine prenotazione</label> <input type="date"
-											required>
-									</div>
-								</div>
-								<div class="col-lg-4">
-									<div class="form-group">
-										<label>Nome Risorsa</label> <input class="form-control"
-											placeholder="Inserire il nome della risorsa" required>
-									</div>
-									<div class="form-group">
-										<label>Ora inizio prenotazione</label> <input type="time"
-											required>
-									</div>
-									<div class="form-group">
-										<label>Ora fine prenotazione</label> <input type="time"
-											required>
+										<label>Controlla fino a</label> <input class="form-control"
+											type="datetime-local" required name="endDate">
 									</div>
 								</div>
 							</div>
